@@ -137,6 +137,11 @@ def detect(save_img=False):
                         with open(txt_path + '.txt', 'a') as f:
                             f.write(('%g ' * len(line)).rstrip() % line + '\n')
 
+                    x1, y1, x2, y2 = map(int, xyxy)
+                    center_x = int((x1 + x2) / 2)
+                    center_y = int((y1 + y2) / 2)
+                    print(f"Object center: ({center_x}, {center_y})")
+
                     plot_one_box(xyxy, im0, label=f'{label} {conf:.2f}', color=colors[int(cls)], line_thickness=3)
 
                 new_objects = current_objects - previous_objects
